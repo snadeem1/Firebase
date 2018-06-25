@@ -1,3 +1,4 @@
+$( document ).ready(function() {
 var config = {
   apiKey: "AIzaSyBySqxLoIdEYCTz8aGwBOhnrqsx25388bc",
   authDomain: "train-tracker-572cc.firebaseapp.com",
@@ -58,7 +59,7 @@ console.log(firstTimeConverted);
 
 // Current Time
 var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
 // Difference between the times
 var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
@@ -74,8 +75,9 @@ console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
 // Next Train
 var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
 
 $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
 trainFrequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain+ "</td></tr>");
+});
 });

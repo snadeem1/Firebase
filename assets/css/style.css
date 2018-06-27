@@ -10,14 +10,16 @@ table  {
     text-align: center;
 }
 
-.jumbotron{
-    background-color: skyblue;
-    height: 50px;
-}
+
 h1{
     margin-top: -50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    opacity: 1;
 }
 h3{
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-title{
+    padding-top: 20px;
 }

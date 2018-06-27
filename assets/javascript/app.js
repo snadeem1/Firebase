@@ -54,15 +54,19 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(trainFrequency);
 
 // First Time (pushed back 1 year to make sure it comes before current time)
-var firstTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
+var firstTimeConverted = moment(trainTime, "hh:mm").subtract(1, "years");
 console.log(firstTimeConverted);
 
 // Current Time
 var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+var timeArr = trainTime.split(":");
+  var trainTime = moment().hours(timeArr[0]).minutes(timeArr[1]);
+
 
 // Difference between the times
-var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+var diffTime = currentTime.diff(moment(firstTimeConverted), "minutes");
 console.log("DIFFERENCE IN TIME: " + diffTime);
 
 // Time apart (remainder)
@@ -74,7 +78,7 @@ var tMinutesTillTrain = trainFrequency - tRemainder;
 console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
 // Next Train
-var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm A");
 console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
 
 $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
